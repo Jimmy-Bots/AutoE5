@@ -4,6 +4,7 @@ name: Auto Api Task
 on: 
   release:
     types: [published]
+  workflow_dispatch:
   push:
     branches: 
       - master
