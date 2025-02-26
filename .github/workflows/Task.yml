@@ -48,11 +48,19 @@ jobs:
         rm -f configkey.txt    
     - name: Commit #上传新的refresh_token到仓库
       run: |
-        git config --global user.email admin@nange.cn
-        git config --global user.name 翠花
+        git config --global user.email me@jsta.top
+        git config --global user.name Fake Jimmy
         git add .
         git commit -m "update new refresh_token" -a
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.G_TOKEN }}
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@v2
+      with:
+        token: ${{ github.token }}
+        repository: ${{ github.repository }}
+        retain_days: 10
+        keep_minimum_runs: 6
+    
